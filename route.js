@@ -3,12 +3,12 @@ import * as page from "./pages.js";
 export const routes = {
     404: page.getPage404,
     "/": page.getPageHome,
-    "/about": page.getPageAbout,
-    "/image" : page.getPageImage
+    "#about": page.getPageAbout,
+    "#image" : page.getPageImage
 };
   
 export const getRouteHtml = async () => {
-    const path = window.location.pathname;
+    const path = window.location.hash || window.location.pathname;
     const route = routes[path] || routes[404];
     const contents = document.getElementById("contents");
     contents.innerHTML = route();
